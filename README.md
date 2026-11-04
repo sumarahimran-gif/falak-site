@@ -1,6 +1,6 @@
 # FALAK — Landing Page
 
-Sleek, interactive landing page for Falaknaz Studio: websites, video generation and automation.
+Sleek, interactive landing page for FALAK, a freelance studio offering custom websites, with AI video generation and automation coming soon.
 
 ## Files
 - `index.html` — the whole site (HTML, CSS and JS in one file)
