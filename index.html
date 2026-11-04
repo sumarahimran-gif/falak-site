@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>FALAK — Websites, Video &amp; Automation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap">
+<style>
+:root{--bg:#07040f;--surface:#110a22;--text:#f1eaff;--muted:#a99cc7;--v1:#8b5cf6;--v2:#c4b5fd;--line:rgba(196,181,253,.16);
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:dark}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#07040f;--surface:#110a22;--text:#f1eaff;--muted:#a99cc7}}
+:root[data-theme="dark"]{--bg:#07040f;--surface:#110a22;--text:#f1eaff;--muted:#a99cc7}
+html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box;margin:0}
+body{background:var(--bg);color:var(--text);font-family:'Montserrat',system-ui,-apple-system,'Segoe UI',sans-serif;font-weight:300;line-height:1.7;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+nav{position:fixed;top:0;left:0;right:0;z-index:20;display:flex;justify-content:space-between;align-items:center;padding:calc(18px + env(safe-area-inset-top,0px)) 6vw 18px;backdrop-filter:blur(14px);background:rgba(7,4,15,.55)}
+.brand{letter-spacing:.5em;font-weight:400;font-size:14px}
+nav a.l{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-left:26px;transition:color .3s}
+nav a.l:hover{color:var(--v2)}
+@media(max-width:600px){nav a.l{display:none}}
+.hero{min-height:100vh;display:grid;place-items:center;text-align:center;padding:120px 6vw 80px;position:relative;overflow:hidden}
+#orb{position:absolute;inset:0;width:100%;height:100%}
+.glow{position:absolute;width:60vmax;height:60vmax;left:50%;top:45%;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(139,92,246,.25),transparent 60%);pointer-events:none}
+.hero-in{position:relative;z-index:2;max-width:760px}
+.logo{width:110px;margin:0 auto 28px;filter:drop-shadow(0 0 22px rgba(139,92,246,.7))}
+h1{font-weight:300;font-size:clamp(30px,5.5vw,58px);line-height:1.15;letter-spacing:.04em}
+h1 b{font-weight:600;background:linear-gradient(90deg,var(--v1),var(--v2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.sub{color:var(--muted);margin:22px auto 36px;max-width:520px}
+.btn{display:inline-block;padding:15px 34px;border-radius:50px;font-size:12px;letter-spacing:.22em;text-transform:uppercase;font-weight:600;background:linear-gradient(120deg,var(--v1),#a78bfa);box-shadow:0 0 30px rgba(139,92,246,.45);transition:transform .3s,box-shadow .3s}
+.btn:hover{transform:translateY(-3px);box-shadow:0 0 50px rgba(167,139,250,.75)}
+.btn.ghost{background:none;border:1px solid var(--line);box-shadow:none;margin-left:10px}
+section{padding:110px 6vw;max-width:1150px;margin:0 auto}
+.tag{font-size:11px;letter-spacing:.4em;text-transform:uppercase;color:var(--v2);margin-bottom:14px}
+h2{font-weight:300;font-size:clamp(26px,4vw,42px);letter-spacing:.04em;margin-bottom:48px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px}
+.card{position:relative;padding:34px 28px;border-radius:20px;background:var(--surface);border:1px solid var(--line);overflow:hidden;transition:transform .35s,border-color .35s}
+.card::before{content:"";position:absolute;inset:0;background:radial-gradient(260px circle at var(--x,50%) var(--y,0%),rgba(139,92,246,.28),transparent 70%);opacity:0;transition:opacity .3s}
+.card:hover{transform:translateY(-6px);border-color:rgba(196,181,253,.45)}
+.card:hover::before{opacity:1}
+.card>*{position:relative}
+.ic{font-size:26px;color:var(--v2);margin-bottom:18px}
+.card h3{font-weight:600;font-size:17px;letter-spacing:.06em;margin-bottom:10px}
+.card p{color:var(--muted);font-size:14px}
+.soon{display:inline-block;margin-left:8px;font-size:9px;letter-spacing:.2em;padding:3px 9px;border-radius:20px;border:1px solid var(--v2);color:var(--v2);vertical-align:middle;text-transform:uppercase}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:30px;counter-reset:s}
+.step{border-top:1px solid var(--line);padding-top:22px;counter-increment:s}
+.step::before{content:"0" counter(s);font-size:32px;font-weight:300;color:var(--v1)}
+.step h3{font-weight:600;font-size:15px;letter-spacing:.08em;margin:8px 0}
+.step p{color:var(--muted);font-size:14px}
+.cta{text-align:center;border:1px solid var(--line);border-radius:28px;margin:0 6vw 80px;max-width:none;background:radial-gradient(circle at 50% 0%,rgba(139,92,246,.22),transparent 65%),var(--surface)}
+.cta h2{margin-bottom:18px}
+.cta p{color:var(--muted);margin-bottom:32px}
+footer{text-align:center;padding:30px 6vw calc(40px + env(safe-area-inset-bottom,0px));color:var(--muted);font-size:11px;letter-spacing:.3em}
+.rv{opacity:0;transform:translateY(30px);transition:opacity .9s,transform .9s}
+.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}.tags span{font-size:10px;letter-spacing:.12em;padding:5px 12px;border-radius:20px;border:1px solid var(--line);color:var(--v2)}.kind{font-size:10px;letter-spacing:.25em;text-transform:uppercase;color:var(--v1);margin-bottom:10px}.stack{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:center;margin-top:50px;padding-top:30px;border-top:1px solid var(--line);color:var(--muted);font-size:12px;letter-spacing:.2em;text-transform:uppercase}.stack a{color:var(--v2)}
+</style>
+</head>
+<body>
+<nav><span class="brand">FALAK</span><div><a class="l" href="#services">Services</a><a class="l" href="#work">Work</a><a class="l" href="#process">Process</a><a class="l" href="#contact">Contact</a><a class="l" href="https://www.instagram.com/falaknaz_studio2" target="_blank" rel="noopener">Instagram</a></div></nav>
+
+<header class="hero">
+<canvas id="orb"></canvas><div class="glow"></div>
+<div class="hero-in">
+<svg class="logo" viewBox="0 0 120 100" aria-hidden="true"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e4d9ff"/><stop offset="1" stop-color="#7c4ddb"/></linearGradient></defs>
+<path d="M30 12 H78 Q56 20 46 36 H70 Q52 40 42 56 L36 80 H30 Z" fill="url(#g)"/>
+<ellipse cx="62" cy="62" rx="52" ry="16" transform="rotate(-18 62 62)" fill="none" stroke="#a78bfa" stroke-width="2" opacity=".85"/>
+<path d="M100 28 l3 9 9 3 -9 3 -3 9 -3 -9 -9 -3 9 -3z" fill="#fff"/></svg>
+<p class="tag">Falaknaz Studio</p>
+<h1>Websites that feel <b>alive.</b><br>Built to convert.</h1>
+<p class="sub">Professional, interactive landing pages — with AI video generation and automation arriving soon.</p>
+<a class="btn" href="#contact">Start a project</a><a class="btn ghost" href="#services">Explore</a>
+</div>
+</header>
+
+<section id="services">
+<p class="tag rv">What I do</p><h2 class="rv">Services</h2>
+<div class="grid">
+<div class="card rv"><div class="ic">✦</div><h3>Landing Pages &amp; Websites</h3><p>Sleek, fast, interactive sites designed around your brand and built to turn visitors into clients.</p></div>
+<div class="card rv"><div class="ic">◐</div><h3>Video Generation <span class="soon">Soon</span></h3><p>AI-powered video content for brands and creators: polished, consistent, and made at scale.</p></div>
+<div class="card rv"><div class="ic">⟳</div><h3>Automation <span class="soon">Soon</span></h3><p>Workflows that remove repetitive work, so your content and business run while you focus on growth.</p></div>
+</div>
+</section>
+
+<section id="work">
+<p class="tag rv">Selected work</p><h2 class="rv">Portfolio</h2>
+<div class="grid">
+<div class="card rv"><p class="kind">Client project</p><h3>Creator Hub Website</h3><p>A custom dark-theme redesign for a paid YouTube-creator community, replacing its Google Sites page with 3D elements, scroll animations, a searchable FAQ and a membership form.</p><div class="tags"><span>React</span><span>TypeScript</span><span>Tailwind</span><span>Three.js</span></div></div>
+<div class="card rv"><p class="kind">Backend</p><h3>Secure Payment Checkout</h3><p>Razorpay checkout with server-set amounts, signature checks and webhook verification, so prices can never be tampered with.</p><div class="tags"><span>Node.js</span><span>Express</span><span>PostgreSQL</span><span>Razorpay</span></div></div>
+<div class="card rv"><p class="kind">Client project</p><h3>Private Creator Course Platform</h3><p>A branded platform with paid courses, access codes, coupons, protected video, progress tracking and an admin dashboard. Every price and access decision is made on the backend.</p><div class="tags"><span>Architecture</span><span>Protected video</span><span>Admin dashboard</span></div></div>
+<div class="card rv"><p class="kind">Team project</p><h3>Secure E-Commerce Platform</h3><p>Customer and admin portals with a ledger-based refund wallet, race-safe inventory, backend-verified payments and profit snapshots that keep old reports unchanged.</p><div class="tags"><span>Wallet ledger</span><span>Inventory</span><span>Payments</span></div></div>
+</div>
+<div class="stack rv"><span>React</span><span>TypeScript</span><span>Three.js</span><span>Node.js</span><span>PostgreSQL</span><span>Razorpay</span><a href="https://github.com/sumarahimran-gif" target="_blank" rel="noopener">GitHub ↗</a></div>
+</section>
+
+<section id="process">
+<p class="tag rv">How it works</p><h2 class="rv">A simple process</h2>
+<div class="steps">
+<div class="step rv"><h3>Discover</h3><p>We talk goals, audience, and the feeling your brand should give.</p></div>
+<div class="step rv"><h3>Design</h3><p>A custom look and layout shaped around your identity.</p></div>
+<div class="step rv"><h3>Build</h3><p>Clean, responsive, smooth, tested on every screen.</p></div>
+<div class="step rv"><h3>Launch</h3><p>Go live with support and room to grow.</p></div>
+</div>
+</section>
+
+<section class="cta rv" id="contact">
+<p class="tag">Let’s talk</p><h2>Ready to build something remarkable?</h2>
+<p>Tell me about your project and I’ll get back to you.</p>
+<a class="btn" href="mailto:alyaimran089@gmail.com">Email me</a><a class="btn ghost" href="https://www.instagram.com/falaknaz_studio2" target="_blank" rel="noopener">Instagram</a>
+</section>
+
+<footer>© 2026 FALAK · FALAKNAZ<br><a href="https://www.instagram.com/falaknaz_studio2" target="_blank" rel="noopener" style="color:var(--v2)">@falaknaz_studio2</a></footer>
+
+<script>
+// scroll reveal
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.15});
+document.querySelectorAll('.rv').forEach(function(el,i){el.style.transitionDelay=(i%3)*0.1+'s';io.observe(el)});
+// card glow follows cursor
+document.querySelectorAll('.card').forEach(function(c){c.addEventListener('pointermove',function(e){var r=c.getBoundingClientRect();c.style.setProperty('--x',(e.clientX-r.left)+'px');c.style.setProperty('--y',(e.clientY-r.top)+'px')})});
+// orbit + star field
+var cv=document.getElementById('orb'),cx=cv.getContext('2d'),W,H,stars=[],mx=0,my=0,t=0;
+function size(){W=cv.width=cv.offsetWidth;H=cv.height=cv.offsetHeight;stars=[];for(var i=0;i<90;i++)stars.push({x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.4+.2,p:Math.random()*6})}
+size();addEventListener('resize',size);
+addEventListener('pointermove',function(e){mx=(e.clientX/innerWidth-.5);my=(e.clientY/innerHeight-.5)});
+function draw(){t+=.008;cx.clearRect(0,0,W,H);
+stars.forEach(function(s){cx.globalAlpha=.3+.4*Math.sin(t*3+s.p);cx.fillStyle='#d8ccff';cx.beginPath();cx.arc(s.x+mx*s.r*14,s.y+my*s.r*14,s.r,0,6.3);cx.fill()});
+cx.globalAlpha=1;var px=W/2+mx*30,py=H*.46+my*20;
+[[.42,.15,-.3,.35],[.3,.1,-.3,.22]].forEach(function(o,k){var rx=Math.min(W,1100)*o[0],ry=rx*.28;cx.strokeStyle='rgba(167,139,250,'+o[3]+')';cx.lineWidth=1.4;cx.beginPath();cx.ellipse(px,py,rx,ry,o[2],0,6.3);cx.stroke();
+var a=t*(k?-1.4:1)+k*2,sx=px+Math.cos(o[2])*rx*Math.cos(a)-Math.sin(o[2])*ry*Math.sin(a),sy=py+Math.sin(o[2])*rx*Math.cos(a)+Math.cos(o[2])*ry*Math.sin(a);
+var g=cx.createRadialGradient(sx,sy,0,sx,sy,16);g.addColorStop(0,'rgba(255,255,255,.95)');g.addColorStop(1,'rgba(139,92,246,0)');cx.fillStyle=g;cx.beginPath();cx.arc(sx,sy,16,0,6.3);cx.fill()});
+requestAnimationFrame(draw)}
+if(!matchMedia('(prefers-reduced-motion:reduce)').matches)draw();
+</script>
+</body>
+</html>
